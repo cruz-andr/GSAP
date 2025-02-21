@@ -3,6 +3,18 @@
 function startLoader() {
     const mainTl = gsap.timeline();
 
+    // Initial page fade in
+    mainTl.fromTo('body', 
+        {
+            opacity: 0
+        },
+        {
+            opacity: 1,
+            duration: 1,
+            ease: "power2.inOut"
+        }
+    )
+
     // Stage 1: BIG IMPACT slam in
     mainTl.fromTo('#stage1', 
         {
@@ -99,8 +111,8 @@ function startLoader() {
     }, "+=1")
     .to(['#stage3-impact', '#stage3-flavors', '#stage3-eatup'], {
         opacity: 0,
-        duration: 0.5
-    }, "-=1")
+        duration: 0
+    }, "-=0.9")
     .to('.bar1, .bar2', {
         y: "100%",
         duration: 1,
