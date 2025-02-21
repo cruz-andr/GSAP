@@ -1,73 +1,83 @@
+//script.js
+// Animation sequence for the loading screen
 function startLoader() {
-  let countElement = document.querySelector(".counter");
-  let currentValue = 0;
+    const mainTl = gsap.timeline();
 
-  function updateCounter() {
-    if (currentValue === 100) {
-      return;
-    }
+    // Stage 1: BIG IMPACT slam in
+    mainTl.to('#stage1', {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+        ease: "power2.in"
+    })
+    .to('#stage1', {
+        opacity: 0,
+        duration: 0,
+        delay: 1 // Let it sit for 1 seconds
+    })
 
-    currentValue += Math.floor(Math.random() * 10) + 1;
+    // Stage 2: Smaller BIG IMPACT + BIIIIG FLAVORS
+    .to('#stage2-impact', {
+        opacity: 1,
+        y: '-150px',
+        duration: 0,
+    })
+    .to('#stage2-flavors', {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+        ease: "power2.in"
+    })
+    .to(['#stage2-impact', '#stage2-flavors'], {
+        opacity: 0,
+        duration: 0,
+        delay: 1 // Let it sit for 1 seconds
+    })
 
-    if(currentValue > 100) {
-      currentValue = 100;
-    }
+    // Stage 3: Smallest BIG IMPACT + Small BIIIIG FLAVORS + EAT UP
+    .to(['#stage3-impact', '#stage3-flavors'], {
+        opacity: 1,
+        duration: 0
+    })
+    .to('#stage3-eatup', {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+        ease: "power2.in"
+    })
+    .to('.bowery-container', {
+        opacity: 1,
+        duration: 0.1
+    })
+    
+    
+    // BOWERY text animation
+    .to('.bowery-text span', {
+        opacity: 1,
+        x: 0,
+        duration: 0.3,
+        stagger: 0.05,
+        ease: "power2.out"
+    })
 
-    countElement.textContent = currentValue;
-
-    let delay = Math.floor(Math.random() * 200) + 50;
-
-    setTimeout(updateCounter, delay);
-  }
-
-  updateCounter();
+    // Final wipe with bars
+    .to('.bar1, .bar2', {
+        height: "100vh",
+        duration: 1,
+        ease: "power2.inOut",
+        stagger: 0.2
+    })
+    .to(['#stage3-impact', '#stage3-flavors', '#stage3-eatup'], {
+        opacity: 0,
+        duration: 0.5
+    }, "-=1")
+    .to('.bar1, .bar2', {
+        y: "100%",
+        duration: 1,
+        ease: "power2.inOut",
+        stagger: 0.2
+    });
 }
 
-startLoader();
-
-gsap.to(".counter", 1.5, {
-  delay: 3.5,
-  opacity: 0,
-  zIndex: -1,
-});
-
-gsap.to(".bar1", 1.5, {
-  delay: 3.5,
-  height: 0,
-//   stagger: {
-//     amount: 0.5,
-//   },
-  ease: "power4.inOut",
-  zIndex: -1,
-});
-gsap.to(".bar2", 1.5, {
-    delay: 3.8,
-    y: "100vh", // Moves the element down by the viewport height
-    ease: "power4.inOut",
-    zIndex: -1
-  });
-
-gsap.to(".overlay", 1.5, {
-  delay: 4.3,
-  opacity: 0,
-  ease: "power4.inOut",
-  zIndex: -1,
-});
-
-gsap.from(".h1", 1.5,{
-delay: 4,
-y: 700,
-stagger: {
-  amount: 0.5,
-},
-ease: "power4.inOut",
-});
-
-gsap.from(".hero", 1.5,{
-delay: 4.5,
-y: 400,
-stagger: {
-  amount: 0.5,
-},
-ease: "power4.inOut",
-});
+// Start the animation when the page loads
+window.addEventListener('load', startLoader);
