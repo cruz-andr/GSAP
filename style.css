@@ -94,13 +94,22 @@ img{
     font-size: 4rem;
     color: #ffffff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transform-origin: center;
     transform: rotate(-10deg);
 }
 
 .bowery-text span {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(100px) rotate(30deg);
+    display: inline-block;
 }
+
+.bowery-text span:nth-child(1) { transform: translateX(100px) rotate(25deg); }
+.bowery-text span:nth-child(2) { transform: translateX(100px) rotate(15deg); }
+.bowery-text span:nth-child(3) { transform: translateX(100px) rotate(5deg); }
+.bowery-text span:nth-child(4) { transform: translateX(100px) rotate(-5deg); }
+.bowery-text span:nth-child(5) { transform: translateX(100px) rotate(-15deg); }
+.bowery-text span:nth-child(6) { transform: translateX(100px) rotate(-25deg); }
 
 .text-container {
     position: fixed;
@@ -121,6 +130,7 @@ img{
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
     opacity: 0;
     transform: translateY(100px);
+    width: 100%;
 }
 
 .big-impact {
@@ -129,22 +139,29 @@ img{
 
 .stage2 {
     font-size: 4rem;
-    transform: translateY(-150px);
+    transform: translateY(-15px);
 }
 
 .stage3 {
     font-size: 2.5rem;
-    transform: translateY(-200px);
+    transform: translateY(-150px) !important;
+}
+
+#stage3-flavors {
+    font-size: 3.5rem !important;
+    transform: translateY(-100px) !important;
+}
+
+#stage3-eatup {
+    font-size: 10rem;
 }
 
 .big-flavors {
     font-size: 10rem;
-    transform: translateY(0);
 }
 
 .eat-up {
     font-size: 10rem;
-    transform: translateY(0);
 }
 
 .smaller-impact {
