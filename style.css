@@ -20,7 +20,7 @@ nav{
     display: flex;
     justify-content: space-between;
     padding: 1em;
-    z-index: 20;
+    z-index: 8;
 }
 
 nav div{
@@ -90,7 +90,7 @@ img{
 
 .bowery-text {
     display: flex;
-    font-family: "Neue Montreal";
+    font-family: "Impact";
     font-size: 4rem;
     color: #ffffff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -100,7 +100,6 @@ img{
 
 .bowery-text span {
     opacity: 0;
-    transform: translateX(100px) rotate(30deg);
     display: inline-block;
 }
 
@@ -119,7 +118,7 @@ img{
     justify-content: center;
     align-items: center;
     z-index: 12;
-    font-family: "Neue Montreal";
+    font-family: "Impact";
     pointer-events: none;
 }
 
@@ -134,7 +133,7 @@ img{
 }
 
 .big-impact {
-    font-size: 10rem;
+    font-size: 8rem;
 }
 
 .stage2 {
@@ -157,7 +156,7 @@ img{
 }
 
 .big-flavors {
-    font-size: 10rem;
+    font-size: 8rem;
 }
 
 .eat-up {

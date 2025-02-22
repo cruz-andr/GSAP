@@ -99,26 +99,30 @@ function startLoader() {
         rotate: 0,
         duration: 0.4,
         stagger: 0.08,
-        ease: "power2.out"
+        ease: "power2.out",
     })
 
     // Final wipe with bars
-    .to('.bar1, .bar2', {
+    .to('.bar1', {
+        height: "0",
+        duration: 0.5,
+        ease: "power2.inOut"
+    }, "bars")
+    .to('.bar2', {
         height: "100vh",
-        duration: 1,
-        ease: "power2.inOut",
-        stagger: 0.2
-    }, "+=1")
+        y: "100%",
+        duration: .5,
+        ease: "power2.inOut"
+    }, "bars")
     .to(['#stage3-impact', '#stage3-flavors', '#stage3-eatup'], {
         opacity: 0,
         duration: 0
-    }, "-=0.9")
-    .to('.bar1, .bar2', {
-        y: "100%",
-        duration: 1,
-        ease: "power2.inOut",
-        stagger: 0.2
-    });
+    }, "-=0.4")
+    .to(".overlay", 1.5, {
+        opacity: 0,
+        ease: "power4.inOut",
+        zIndex: -1,
+      });
 }
 
 // Start the animation when the page loads
