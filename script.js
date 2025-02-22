@@ -93,13 +93,20 @@ function startLoader() {
         opacity: 1,
         duration: 0.1
     })
-    .to('.bowery-text span', {
+    .fromTo('.bowery-text span', {
+        opacity: 0,
+        x: 98,
+        y: 34,
+        rotation: 28,
+    }, {
         opacity: 1,
-        x: 0,
-        rotate: 0,
-        duration: 0.4,
-        stagger: 0.08,
-        ease: "power2.out",
+        x: (i) => [-97/2, -63/2, -15/2, 30/2, 65/2, 98/2][i],
+        y: (i) => [35/2, 15/2, 5/2, 5/2, 15/2, 34/2][i],
+        rotation: (i) => [-26, -18, -6, 8, 20, 28][i],
+        duration: .8,
+        stagger: 0.13,
+        ease: "none.out",
+        delay: .5
     })
 
     // Final wipe with bars
@@ -118,11 +125,32 @@ function startLoader() {
         opacity: 0,
         duration: 0
     }, "-=0.4")
+    .to('.bowery-text span', {
+        color: "#ffffff"
+    }, "-=.3")
+    .fromTo('.leaf-container', {
+        opacity: 0,
+        y: -100
+    }, {
+        opacity: 1,
+        y: 0,
+        duration: .3,
+        ease: "power2.out"
+    }, "-=.8")
+    .fromTo('.header', {
+        opacity: 0,
+        y: 100
+    }, {
+        opacity: 1,
+        y: 0,
+        duration: .3,
+        ease: "power2.out"
+    }, "-=1.3")
     .to(".overlay", 1.5, {
         opacity: 0,
         ease: "power4.inOut",
         zIndex: -1,
-      });
+    });
 }
 
 // Start the animation when the page loads
